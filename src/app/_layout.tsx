@@ -1,18 +1,67 @@
-import { DarkTheme, DefaultTheme, ThemeProvider } from 'expo-router';
-import * as SplashScreen from 'expo-splash-screen';
-import { useColorScheme } from 'react-native';
+import {
+  Estedad_100Thin,
+  Estedad_400Regular,
+  Estedad_700Bold,
+  useFonts,
+} from "@expo-google-fonts/estedad";
 
-import { AnimatedSplashOverlay } from '@/components/animated-icon';
-import AppTabs from '@/components/app-tabs';
+import {
+  Inter_100Thin,
+  Inter_400Regular,
+  Inter_700Bold,
+} from "@expo-google-fonts/inter";
 
-SplashScreen.preventAutoHideAsync();
+import {
+  LanguageProvider,
+  useLanguage,
+} from "@/lib/providers/language-provider";
+import { PremiumProvider } from "@/lib/providers/premium-provider";
 
-export default function TabLayout() {
-  const colorScheme = useColorScheme();
+import { LocaleProvider, Stack } from "expo-router";
+import { StatusBar } from "expo-status-bar";
+import { SafeAreaProvider } from "react-native-safe-area-context";
+
+function AppNavigator() {
+  const { direction, isReady } = useLanguage();
+
+  if (!isReady) {
+    return null;
+  }
+
   return (
-    <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <AnimatedSplashOverlay />
-      <AppTabs />
-    </ThemeProvider>
+    <SafeAreaProvider>
+      <LocaleProvider direction={direction}>
+        <StatusBar style="dark" />
+        <Stack
+          screenOptions={{
+            headerShown: false,
+          }}
+        />
+      </LocaleProvider>
+    </SafeAreaProvider>
+  );
+}
+
+export default function RootLayout() {
+  const [fontsLoaded] = useFonts({
+    EstedadThin: Estedad_100Thin,
+    EstedadRegular: Estedad_400Regular,
+    EstedadBold: Estedad_700Bold,
+
+    InterThin: Inter_100Thin,
+    InterRegular: Inter_400Regular,
+    InterBold: Inter_700Bold,
+  });
+
+  if (!fontsLoaded) {
+    return null;
+  }
+
+  return (
+    <LanguageProvider>
+      <PremiumProvider>
+        <AppNavigator />
+      </PremiumProvider>
+    </LanguageProvider>
   );
 }
