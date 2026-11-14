@@ -1,5 +1,13 @@
 export const translations = {
   en: {
+    installmentEdit: "Edit plan",
+    installmentDelete: "Delete plan",
+    installmentDeleteConfirm: "Delete this plan and all its payment records? This cannot be undone.",
+    installmentCancel: "Cancel",
+    installmentNew: "New plan",
+    installmentSaveChanges: "Save changes",
+    installmentPaidEditHint: "This plan has recorded payments. You can edit its title. To change the schedule or currency, undo its payments first.",
+
     premiumLifetimeHint:
       "One payment unlocks all tools. Restore purchases using the same account in the same store.",
     premiumActive: "Premium is active",
@@ -20,19 +28,15 @@ export const translations = {
     ratesUpdated: "Source update time",
     ratesRefresh: "Refresh rate",
     ratesSource: "Source",
-
-    dateInvalid:
-      "Enter valid Solar Hijri dates between 1200 and 1600, with the end on or after the start.",
     electricityInvalid:
       "Enter non-negative values, 0–24 hours, and a positive whole number of days within the supported range.",
-    dateHint:
-      "Enter Solar Hijri dates (years 1200–1600). The end must not precede the start. For age, enter birth date and today. Days exclude the starting day.",
     startYear: "Start / birth year (Solar Hijri)",
     startMonth: "Start month (1–12)",
     startDay: "Start day",
     endYear: "End year (Solar Hijri)",
     endMonth: "End month (1–12)",
     endDay: "End day",
+    dateToday: "Today",
     elapsedDays: "Elapsed days",
     completedYears: "Completed years / age",
 
@@ -58,7 +62,7 @@ export const translations = {
     deposit: "Down payment (Toman)",
     installmentAmount: "Each installment (Toman)",
     installmentCount: "Number of installments",
-    installmentTotal: "Total installment purchase (Toman)",
+    installmentBuyTotal: "Total installment purchase (Toman)",
     purchaseDifference: "Difference from cash price (Toman)",
     purchaseDifferencePercent: "Difference from cash price (%)",
     finalPriceHint:
@@ -111,6 +115,23 @@ export const translations = {
       "Enter a valid, non-negative amount within the supported range.",
     dateCalculator: "Date Calculator",
     dateCalculatorDescription: "Calculate age and time between dates",
+    calendarPersian: "Persian",
+    calendarHijri: "Hijri",
+    calendarGregorian: "Gregorian",
+
+    dateStart: "Start date",
+    dateEnd: "End date",
+    dateDay: "Day",
+    dateMonth: "Month",
+    dateYear: "Year",
+
+    dateHint:
+      "Select a calendar and enter the start and end dates. Changing calendars clears the inputs.",
+    dateInvalid:
+      "Enter valid dates with years from 1 to 9999. The end must not precede the start.",
+    dateHijriHint:
+      "Uses the calculated civil Hijri calendar, which may differ from moon-sighting dates.",
+    dateCalendarUnsupported: "This calendar is not supported on your device.",
     purchaseComparison: "Cash vs Installments",
     purchaseComparisonDescription: "Compare cash and installment purchases",
     finalPrice: "Final Price Calculator",
@@ -208,9 +229,60 @@ export const translations = {
     loanDurationPositive: "Loan duration must be greater than zero.",
     splitBillInvalid:
       "The amount must be zero or greater, and the number of people must be a whole number of at least one.",
+    installmentBook: "Installment Book",
+    installmentBookDescription: "Plan due dates and track installments",
+    installmentBookHint:
+      "Enter a title, installment amount, number of installments and first Solar Hijri due date.",
+    installmentPlanTitle: "Plan title",
+    installmentTitlePlaceholder: "For example, laptop installments",
+    installmentEachAmount: "Amount per installment",
+    installmentFirstDue: "First due date (Solar Hijri)",
+    installmentLastDue: "Last due date (Solar Hijri)",
+    installmentScheduleHint:
+      "Creates equal monthly installments. If the selected day does not exist in a month, its last day is used.",
+    installmentFormInvalid:
+      "Enter a title and valid date. The amount must be a positive whole number and the installment count must be 1–360. The total must be within the supported range.",
+    installmentPreview: "Preview installment plan",
+    installmentTotal: "Total installments",
+    installmentPreviewOnly: "This is a preview and has not been saved.",
+    installmentSavePlan: "Save plan",
+    installmentSaving: "Reading or saving data…",
+    installmentSavedBooks: "Saved plans",
+    installmentNoSavedBooks: "You haven't saved any plans yet.",
+    installmentStorageError:
+      "Could not read or save your data. Try again; the latest change may not have been saved.",
+    installmentRetry: "Try again",
+
+    installmentRemaining: "Remaining amount",
+    installmentPaidAmount: "Paid amount",
+    installmentOverdueAmount: "Overdue amount",
+    installmentPaidCount: "Paid installments / total",
+    installmentNextUnpaid: "Earliest unpaid due date",
+
+    installmentShowDetails: "Show installments",
+    installmentHideDetails: "Hide installments",
+    installmentShowMore: "Show more installments",
+    installmentNumber: "Installment",
+    installmentDueDate: "Due date",
+
+    installmentStatusPaid: "Paid",
+    installmentStatusOverdue: "Overdue",
+    installmentStatusToday: "Due today",
+    installmentStatusUpcoming: "Upcoming",
+
+    installmentMarkPaid: "Mark as paid",
+    installmentUndoPayment: "Undo payment",
   },
 
   fa: {
+    installmentEdit: "ویرایش دفتر",
+    installmentDelete: "حذف دفتر",
+    installmentDeleteConfirm: "این دفتر و تمام پرداخت‌های ثبت‌شدهٔ آن حذف شوند؟ این کار قابل بازگشت نیست.",
+    installmentCancel: "انصراف",
+    installmentNew: "دفتر جدید",
+    installmentSaveChanges: "ذخیره تغییرات",
+    installmentPaidEditHint: "این دفتر پرداخت ثبت‌شده دارد؛ عنوان قابل ویرایش است. برای تغییر مبلغ، واحد یا سررسیدها ابتدا ثبت پرداخت‌ها را لغو کن.",
+
     premiumLifetimeHint:
       "با یک بار پرداخت، همهٔ ابزارها باز می‌شوند. بازیابی خرید با همان حساب و در همان فروشگاه انجام می‌شود.",
     premiumActive: "نسخهٔ ویژه فعال است",
@@ -230,19 +302,15 @@ export const translations = {
     ratesUpdated: "زمان به‌روزرسانی منبع",
     ratesRefresh: "به‌روزرسانی نرخ",
     ratesSource: "منبع",
-
-    dateInvalid:
-      "تاریخ‌های معتبر شمسی بین سال ۱۲۰۰ و ۱۶۰۰ وارد کن؛ پایان نباید قبل از شروع باشد.",
     electricityInvalid:
       "مقادیر نامنفی، ساعت بین صفر و ۲۴ و تعداد روز صحیح مثبت در محدودهٔ قابل محاسبه وارد کن.",
-    dateHint:
-      "تاریخ شمسی با سال بین ۱۲۰۰ و ۱۶۰۰ وارد کن. پایان نباید قبل از شروع باشد. برای سن، تاریخ تولد و امروز را وارد کن. روز شروع در فاصله شمرده نمی‌شود.",
     startYear: "سال شروع / تولد (شمسی)",
     startMonth: "ماه شروع (۱ تا ۱۲)",
     startDay: "روز شروع",
     endYear: "سال پایان (شمسی)",
     endMonth: "ماه پایان (۱ تا ۱۲)",
     endDay: "روز پایان",
+    dateToday: "امروز",
     elapsedDays: "فاصله به روز",
     completedYears: "سال کامل / سن",
 
@@ -269,7 +337,7 @@ export const translations = {
     deposit: "پیش‌پرداخت (تومان)",
     installmentAmount: "مبلغ هر قسط (تومان)",
     installmentCount: "تعداد اقساط",
-    installmentTotal: "مجموع خرید اقساطی (تومان)",
+    installmentBuyTotal: "مجموع خرید اقساطی (تومان)",
     purchaseDifference: "اختلاف با قیمت نقدی (تومان)",
     purchaseDifferencePercent: "اختلاف نسبت به قیمت نقدی (درصد)",
     finalPriceHint:
@@ -324,6 +392,23 @@ export const translations = {
       "یک مبلغ معتبر و نامنفی در محدودهٔ قابل محاسبه وارد کن.",
     dateCalculator: "محاسبه تاریخ",
     dateCalculatorDescription: "محاسبه سن و فاصله بین دو تاریخ",
+    calendarPersian: "شمسی",
+    calendarHijri: "هجری قمری",
+    calendarGregorian: "میلادی",
+
+    dateStart: "تاریخ شروع",
+    dateEnd: "تاریخ پایان",
+    dateDay: "روز",
+    dateMonth: "ماه",
+    dateYear: "سال",
+
+    dateHint:
+      "تقویم را انتخاب کن و تاریخ شروع و پایان را وارد کن. با تغییر تقویم، ورودی‌ها پاک می‌شوند.",
+    dateInvalid:
+      "تاریخ معتبر وارد کن؛ سال باید بین ۱ و ۹۹۹۹ باشد و پایان نباید قبل از شروع باشد.",
+    dateHijriHint:
+      "تقویم قمری محاسباتی است و ممکن است با تاریخ مبتنی بر رؤیت هلال اختلاف داشته باشد.",
+    dateCalendarUnsupported: "این تقویم در دستگاه شما پشتیبانی نمی‌شود.",
     purchaseComparison: "مقایسه خرید نقدی و اقساطی",
     purchaseComparisonDescription: "مقایسه هزینه خرید نقدی و اقساطی",
     finalPrice: "محاسبه قیمت نهایی",
@@ -420,6 +505,49 @@ export const translations = {
     loanDurationPositive: "مدت بازپرداخت باید بیشتر از صفر باشد.",
     splitBillInvalid:
       "مبلغ باید صفر یا بیشتر و تعداد افراد باید عدد صحیحِ حداقل یک باشد.",
+    installmentBook: "دفتر اقساط",
+    installmentBookDescription: "برنامه‌ریزی سررسید و پیگیری اقساط",
+    installmentBookHint:
+      "عنوان، مبلغ هر قسط، تعداد اقساط و اولین سررسید شمسی را وارد کن.",
+    installmentPlanTitle: "عنوان دفتر",
+    installmentTitlePlaceholder: "مثلاً اقساط خرید لپ‌تاپ",
+    installmentEachAmount: "مبلغ هر قسط",
+    installmentFirstDue: "اولین سررسید شمسی",
+    installmentLastDue: "آخرین سررسید شمسی",
+    installmentScheduleHint:
+      "اقساط ماهانه و با مبلغ یکسان ساخته می‌شوند. اگر روز انتخابی در ماهی وجود نداشته باشد، آخرین روز همان ماه انتخاب می‌شود.",
+    installmentFormInvalid:
+      "عنوان و تاریخ معتبر وارد کن. مبلغ هر قسط باید عدد صحیح مثبت و تعداد اقساط بین ۱ تا ۳۶۰ باشد. مبلغ کل نیز باید در محدودهٔ قابل محاسبه باشد.",
+    installmentPreview: "نمایش برنامهٔ اقساط",
+    installmentTotal: "مجموع اقساط",
+    installmentPreviewOnly: "این برنامه پیش‌نمایش است و هنوز ذخیره نشده.",
+    installmentSavePlan: "ذخیره دفتر",
+    installmentSaving: "در حال خواندن یا ذخیره اطلاعات…",
+    installmentSavedBooks: "دفترهای ذخیره‌شده",
+    installmentNoSavedBooks: "هنوز دفتری ذخیره نکرده‌ای.",
+    installmentStorageError:
+      "خواندن یا ذخیره اطلاعات انجام نشد. دوباره تلاش کن؛ آخرین تغییر ممکن است ثبت نشده باشد.",
+    installmentRetry: "تلاش دوباره",
+
+    installmentRemaining: "مانده اقساط",
+    installmentPaidAmount: "مبلغ پرداخت‌شده",
+    installmentOverdueAmount: "مبلغ معوق",
+    installmentPaidCount: "تعداد پرداخت‌شده از کل",
+    installmentNextUnpaid: "نزدیک‌ترین سررسید پرداخت‌نشده",
+
+    installmentShowDetails: "نمایش اقساط",
+    installmentHideDetails: "بستن اقساط",
+    installmentShowMore: "نمایش اقساط بیشتر",
+    installmentNumber: "قسط",
+    installmentDueDate: "سررسید",
+
+    installmentStatusPaid: "پرداخت‌شده",
+    installmentStatusOverdue: "معوق",
+    installmentStatusToday: "سررسید امروز",
+    installmentStatusUpcoming: "سررسید آینده",
+
+    installmentMarkPaid: "ثبت پرداخت",
+    installmentUndoPayment: "لغو ثبت پرداخت",
   },
 } as const;
 
