@@ -11,7 +11,8 @@ export type ToolId =
   | "date-calculator"
   | "purchase-comparison"
   | "final-price"
-  | "electricity";
+  | "electricity"
+  | "installment-book";
 
 export type ToolAccess = "free" | "premium";
 
@@ -78,7 +79,7 @@ export const tools: readonly ToolDefinition[] = [
     titleKey: "dateCalculator",
     descriptionKey: "dateCalculatorDescription",
     route: "/tools/date-calculator",
-    access: "premium",
+    access: "free",
     icon: "calendar-outline",
   },
   {
@@ -86,7 +87,7 @@ export const tools: readonly ToolDefinition[] = [
     titleKey: "purchaseComparison",
     descriptionKey: "purchaseComparisonDescription",
     route: "/tools/purchase-comparison",
-    access: "premium",
+    access: "free",
     icon: "git-compare-outline",
   },
   {
@@ -94,7 +95,7 @@ export const tools: readonly ToolDefinition[] = [
     titleKey: "finalPrice",
     descriptionKey: "finalPriceDescription",
     route: "/tools/final-price",
-    access: "premium",
+    access: "free",
     icon: "calculator-outline",
   },
   {
@@ -102,7 +103,15 @@ export const tools: readonly ToolDefinition[] = [
     titleKey: "electricity",
     descriptionKey: "electricityDescription",
     route: "/tools/electricity",
-    access: "premium",
+    access: "free",
     icon: "flash-outline",
+  },
+  {
+    id: "installment-book",
+    titleKey: "installmentBook",
+    descriptionKey: "installmentBookDescription",
+    route: "/tools/installment-book",
+    access: "free",
+    icon: "receipt-outline",
   },
 ];
