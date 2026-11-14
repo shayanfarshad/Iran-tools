@@ -1,3 +1,5 @@
+import { VehicleReminderProvider } from "@/features/vehicles/reminder-provider";
+import { InstallmentReminderProvider } from "@/features/installments/reminder-provider";
 import {
   Estedad_100Thin,
   Estedad_400Regular,
@@ -68,7 +70,11 @@ export default function RootLayout() {
     <ThemeProvider>
       <LanguageProvider>
         <PremiumProvider>
-          <AppNavigator />
+          <InstallmentReminderProvider>
+            <VehicleReminderProvider>
+              <AppNavigator />
+            </VehicleReminderProvider>
+          </InstallmentReminderProvider>
         </PremiumProvider>
       </LanguageProvider>
     </ThemeProvider>

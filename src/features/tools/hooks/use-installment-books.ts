@@ -1,146 +1,20 @@
-import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useEffect, useRef, useState } from "react";
 
 import {
     editInstallmentPlan,
     markInstallmentPaid,
-    summarizeInstallments,
     undoInstallmentPayment,
     type Installment,
     type InstallmentPlan,
 } from "../calculators/installment-book";
 
-const STORAGE_KEY = "iran-tools:installment-books:v1";
+import { changeStoredPlans, readBooks, replaceBooks } from "../../installments/storage";
 
 type NewPlan = {
   title: string;
   currency: InstallmentPlan["currency"];
   installments: Installment[];
 };
-
-type StoredData = {
-  version: 1;
-  plans: InstallmentPlan[];
-};
-
-// Serialize reads and writes to avoid overwriting another pending operation.
-let storageQueue: Promise<unknown> = Promise.resolve();
-
-function serialize<T>(operation: () => Promise<T>): Promise<T> {
-  const result = storageQueue.then(operation);
-
-  storageQueue = result.then(
-    () => undefined,
-    () => undefined,
-  );
-
-  return result;
-}
-
-function isPlan(value: unknown): value is InstallmentPlan {
-  if (!value || typeof value !== "object") return false;
-
-  const plan = value as Partial<InstallmentPlan>;
-
-  if (
-    typeof plan.id !== "string" ||
-    !plan.id.trim() ||
-    typeof plan.title !== "string" ||
-    !plan.title.trim() ||
-    plan.title.length > 80 ||
-    !["toman", "rial"].includes(plan.currency ?? "") ||
-    typeof plan.createdAt !== "string" ||
-    !Number.isFinite(Date.parse(plan.createdAt)) ||
-    !Array.isArray(plan.installments) ||
-    plan.installments.length < 1 ||
-    plan.installments.length > 360
-  ) {
-    return false;
-  }
-
-  for (const item of plan.installments) {
-    if (
-      !item ||
-      typeof item !== "object" ||
-      typeof item.id !== "string" ||
-      typeof item.dueDate !== "string" ||
-      !Number.isSafeInteger(item.number) ||
-      item.number < 1
-    ) {
-      return false;
-    }
-
-    if (
-      item.payment !== null &&
-      (!item.payment ||
-        typeof item.payment.paidAt !== "string" ||
-        !Number.isFinite(Date.parse(item.payment.paidAt)))
-    ) {
-      return false;
-    }
-  }
-
-  try {
-    // Also validates amounts, due dates, duplicate IDs and total precision.
-    summarizeInstallments(plan.installments, "2000-01-01");
-    return true;
-  } catch {
-    return false;
-  }
-}
-
-function validatePlans(value: unknown): asserts value is InstallmentPlan[] {
-  if (!Array.isArray(value) || !value.every(isPlan)) {
-    throw new Error("invalid-stored-plans");
-  }
-
-  const ids = value.map((plan) => plan.id);
-
-  if (new Set(ids).size !== ids.length) {
-    throw new Error("duplicate-plan-id");
-  }
-}
-
-async function readStoredPlans(): Promise<InstallmentPlan[]> {
-  const raw = await AsyncStorage.getItem(STORAGE_KEY);
-
-  if (raw === null) return [];
-
-  const parsed: unknown = JSON.parse(raw);
-
-  if (!parsed || typeof parsed !== "object") {
-    throw new Error("invalid-storage");
-  }
-
-  const data = parsed as Partial<StoredData>;
-
-  if (data.version !== 1) {
-    throw new Error("unsupported-storage-version");
-  }
-
-  validatePlans(data.plans);
-  return data.plans;
-}
-
-async function changeStoredPlans(
-  update: (plans: InstallmentPlan[]) => InstallmentPlan[],
-): Promise<InstallmentPlan[]> {
-  return serialize(async () => {
-    const current = await readStoredPlans();
-    const next = update(current);
-
-    validatePlans(next);
-
-    const data: StoredData = {
-      version: 1,
-      plans: next,
-    };
-
-    await AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(data));
-
-    return next;
-  });
-}
 
 export function useInstallmentBooks() {
   const [plans, setPlans] = useState<InstallmentPlan[]>([]);
@@ -153,7 +27,7 @@ export function useInstallmentBooks() {
   useEffect(() => {
     let active = true;
 
-    serialize(readStoredPlans)
+    readBooks()
       .then((loadedPlans) => {
         if (!active) return;
 
@@ -200,7 +74,7 @@ export function useInstallmentBooks() {
     }
   };
 
-  const reload = () => execute(() => serialize(readStoredPlans));
+  const reload = () => execute(() => readBooks());
 
   const addPlan = (input: NewPlan): Promise<boolean> => {
     if (!isLoaded) return Promise.resolve(false);
@@ -281,5 +155,6 @@ export function useInstallmentBooks() {
     updatePlan,
     deletePlan,
     setPayment,
+    restorePlans: (plans: InstallmentPlan[]) => execute(() => replaceBooks(plans)),
   };
 }

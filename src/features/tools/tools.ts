@@ -12,7 +12,9 @@ export type ToolId =
   | "purchase-comparison"
   | "final-price"
   | "electricity"
-  | "installment-book";
+  | "installment-book"
+  | "trip-split"
+  | "vehicle-book";
 
 export type ToolAccess = "free" | "premium";
 
@@ -26,6 +28,22 @@ export type ToolDefinition = {
 };
 
 export const tools: readonly ToolDefinition[] = [
+  {
+    id: "vehicle-book",
+    titleKey: "vehicleBook",
+    descriptionKey: "vehicleBookDescription",
+    route: "/tools/vehicle-book",
+    access: "free",
+    icon: "car-outline",
+  },
+  {
+    id: "trip-split",
+    titleKey: "tripSplit",
+    descriptionKey: "tripSplitDescription",
+    route: "/tools/trip-split",
+    access: "free",
+    icon: "airplane-outline",
+  },
   {
     id: "percentage",
     titleKey: "percentage",

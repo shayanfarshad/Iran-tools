@@ -10,6 +10,6 @@ export default ({ config }: ConfigContext): ExpoConfig => {
     slug: config.slug ?? "iran-tools",
     android: { ...config.android, package: "com.shayanfarshad.irantools" },
     extra: { ...config.extra, billing: { store, publicKey, productId: "premium_lifetime" } },
-    plugins: [...(config.plugins ?? []), "./plugins/with-market-billing.js"],
+    plugins: [...(config.plugins ?? []), "./plugins/with-market-billing.js", "expo-notifications", "expo-sharing"],
   };
 };

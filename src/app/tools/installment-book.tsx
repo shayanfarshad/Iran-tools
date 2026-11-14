@@ -1,3 +1,4 @@
+import BookUtilities from "@/features/installments/book-utilities";
 import ScreenScrollContainer from "@/components/screen-scroll-container";
 import CalculationResult from "@/components/tools/calculation-result";
 import ClearInputsButton from "@/components/ui/clear-inputs-button";
@@ -504,6 +505,13 @@ export default function InstallmentBookScreen() {
           onDelete={books.deletePlan}
         />
       ))}
+      <BookUtilities
+        disabled={books.isBusy}
+        loaded={books.isLoaded}
+        plans={books.plans}
+        restore={books.restorePlans}
+        onRestored={cancelForm}
+      />
     </ScreenScrollContainer>
   );
 }
