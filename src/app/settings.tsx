@@ -2,11 +2,36 @@ import { Pressable, StyleSheet, Text, View } from "react-native";
 
 import ScreenContainer from "@/components/screen-scroll-container";
 import { useLanguage } from "@/lib/providers/language-provider";
-import { colors, getTypography, radius, spacing } from "@/theme";
+import {
+    getColors,
+    getTypography,
+    radius,
+    spacing,
+    useTheme,
+    type ThemeColors,
+} from "@/theme";
 
 export default function SettingsScreen() {
   const { language, t, changeLanguage } = useLanguage();
-  const styles = createSettingsStyles(language);
+  const { themeMode, setThemeMode, colorScheme } = useTheme();
+
+  const themeColors = getColors(colorScheme);
+  const styles = createSettingsStyles(language, themeColors);
+
+  const themeOptions = [
+    {
+      value: "light" as const,
+      label: language === "fa" ? "روشن" : "Light",
+    },
+    {
+      value: "dark" as const,
+      label: language === "fa" ? "تاریک" : "Dark",
+    },
+    {
+      value: "system" as const,
+      label: language === "fa" ? "خودکار" : "System",
+    },
+  ];
 
   return (
     <ScreenContainer>
@@ -44,12 +69,44 @@ export default function SettingsScreen() {
         </Pressable>
 
         <Text style={styles.hint}>{t("languageChangeHint")}</Text>
+
+        <View style={styles.sectionDivider} />
+
+        <Text style={styles.sectionTitle}>
+          {language === "fa" ? "ظاهر برنامه" : "Appearance"}
+        </Text>
+
+        <Text style={styles.description}>
+          {language === "fa"
+            ? "حالت نمایش برنامه را انتخاب کن."
+            : "Choose how the app looks."}
+        </Text>
+
+        {themeOptions.map((option) => (
+          <Pressable
+            key={option.value}
+            style={[
+              styles.languageOption,
+              themeMode === option.value && styles.selectedOption,
+            ]}
+            onPress={() => setThemeMode(option.value)}
+          >
+            <Text style={styles.languageName}>{option.label}</Text>
+
+            <View
+              style={[
+                styles.radio,
+                themeMode === option.value && styles.selectedRadio,
+              ]}
+            />
+          </Pressable>
+        ))}
       </View>
     </ScreenContainer>
   );
 }
 
-function createSettingsStyles(language: "fa" | "en") {
+function createSettingsStyles(language: "fa" | "en", colors: ThemeColors) {
   const typography = getTypography(language);
 
   return StyleSheet.create({
@@ -108,6 +165,11 @@ function createSettingsStyles(language: "fa" | "en") {
       ...typography.caption,
       color: colors.textSecondary,
       marginTop: spacing.md,
+    },
+    sectionDivider: {
+      height: 1,
+      backgroundColor: colors.border,
+      marginVertical: spacing.xxl,
     },
   });
 }

@@ -2,7 +2,9 @@ import { Ionicons } from "@expo/vector-icons";
 import { Pressable, StyleSheet, Text, View } from "react-native";
 
 import { useLanguage } from "@/lib/providers/language-provider";
-import { colors, getTypography, radius, spacing } from "@/theme";
+import { getColors, getTypography, radius, spacing, useTheme } from "@/theme";
+
+import type { ThemeColors } from "@/theme";
 
 type ToolCardProps = {
   title: string;
@@ -22,7 +24,10 @@ export default function ToolCard({
   locked = false,
 }: ToolCardProps) {
   const { language } = useLanguage();
-  const styles = createToolCardStyles(language);
+  const { colorScheme } = useTheme();
+
+  const themeColors = getColors(colorScheme);
+  const styles = createToolCardStyles(language, themeColors);
 
   return (
     <Pressable
@@ -36,14 +41,14 @@ export default function ToolCard({
     >
       <View style={styles.toolCardTop}>
         <View style={styles.toolIcon}>
-          <Ionicons name={icon} size={22} color={colors.primary} />
+          <Ionicons name={icon} size={22} color={themeColors.primary} />
         </View>
 
         {locked && (
           <Ionicons
             name="lock-closed-outline"
             size={16}
-            color={colors.textMuted}
+            color={themeColors.textMuted}
           />
         )}
       </View>
@@ -55,7 +60,7 @@ export default function ToolCard({
   );
 }
 
-function createToolCardStyles(language: "fa" | "en") {
+function createToolCardStyles(language: "fa" | "en", colors: ThemeColors) {
   const typography = getTypography(language);
 
   return StyleSheet.create({

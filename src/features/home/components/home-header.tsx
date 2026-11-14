@@ -3,10 +3,14 @@ import { Link } from "expo-router";
 import { Pressable, Text, View } from "react-native";
 
 import { useLanguage } from "@/lib/providers/language-provider";
-import { colors } from "@/theme";
+import { getColors, useTheme } from "@/theme";
 import { useHomeStyles } from "../use-home-styles";
+
 export default function HomeHeader() {
   const { t } = useLanguage();
+  const { colorScheme } = useTheme();
+
+  const colors = getColors(colorScheme);
   const styles = useHomeStyles();
 
   return (

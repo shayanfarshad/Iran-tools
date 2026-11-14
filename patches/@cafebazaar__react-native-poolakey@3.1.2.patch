@@ -1,0 +1,55 @@
+diff --git a/android/build.gradle b/android/build.gradle
+index d9f7f1d5669958c0597f45b61dd3fa83d7fd6390..98c0b086c13afa7e2dae90cb020afe8c612b9c70 100644
+--- a/android/build.gradle
++++ b/android/build.gradle
+@@ -50,6 +50,7 @@ def supportsNamespace() {
+ }
+ 
+ android {
++  buildFeatures { buildConfig true }
+   if (supportsNamespace()) {
+     namespace "ir.cafebazaar.poolakey.rn"
+ 
+diff --git a/android/src/main/java/com/cafebazaar/reactnativepoolakey/ReactNativePoolakeyModule.kt b/android/src/main/java/com/cafebazaar/reactnativepoolakey/ReactNativePoolakeyModule.kt
+index a9aa8027925369222827989eb4f05950ca6db1dc..1abfd6c8a2628b6304282b9cf14c89f402498f47 100644
+--- a/android/src/main/java/com/cafebazaar/reactnativepoolakey/ReactNativePoolakeyModule.kt
++++ b/android/src/main/java/com/cafebazaar/reactnativepoolakey/ReactNativePoolakeyModule.kt
+@@ -71,7 +71,7 @@ class ReactNativePoolakeyModule(reactContext: ReactApplicationContext) : ReactCo
+       promise.reject(IllegalStateException("payment not connected"))
+       return
+     }
+-    val activity = getCurrentActivity();
++    val activity = reactApplicationContext.currentActivity;
+     if (activity == null) {
+       promise.reject(IllegalStateException("activity not found"))
+       return
+@@ -96,7 +96,7 @@ class ReactNativePoolakeyModule(reactContext: ReactApplicationContext) : ReactCo
+     promise: Promise
+   ) {
+ 
+-    check(currentActivity != null) {
++    check(reactApplicationContext.currentActivity != null) {
+       "currentActivity is null"
+     }
+ 
+@@ -120,7 +120,7 @@ class ReactNativePoolakeyModule(reactContext: ReactApplicationContext) : ReactCo
+     promise: Promise
+   ) {
+ 
+-    check(currentActivity != null) {
++    check(reactApplicationContext.currentActivity != null) {
+       "currentActivity is null"
+     }
+ 
+diff --git a/src/index.ts b/src/index.ts
+index 83b40a80b5f5bf9a460ceac485c728f90cc6ee14..324ffa61a0096bd6e7883ba465e643564c78de45 100644
+--- a/src/index.ts
++++ b/src/index.ts
+@@ -28,6 +28,7 @@ function ensureConnected(): Promise<void> {
+   if (!isConnecting) {
+     isConnecting = bridge.connect(initedRsaKey).then(() => {
+       isConnected = true;
++    }).finally(() => {
+       isConnecting = undefined;
+     });
+   }

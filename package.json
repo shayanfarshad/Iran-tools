@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "main": "expo-router/entry",
   "dependencies": {
+    "@cafebazaar/react-native-poolakey": "^3.1.2",
     "@expo-google-fonts/estedad": "^0.4.0",
     "@expo-google-fonts/inter": "^0.4.2",
     "@expo/ui": "~58.0.27",
@@ -23,6 +24,7 @@
     "expo-symbols": "~58.0.4",
     "expo-system-ui": "~58.0.7",
     "expo-web-browser": "~58.0.7",
+    "iab-myket-reactnative": "^2.2.0",
     "react": "19.3.0",
     "react-dom": "19.3.0",
     "react-native": "0.88.1",

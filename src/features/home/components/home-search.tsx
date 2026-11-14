@@ -3,7 +3,7 @@ import { useState } from "react";
 import { TextInput, View } from "react-native";
 
 import { useLanguage } from "@/lib/providers/language-provider";
-import { colors } from "@/theme";
+import { getColors, useTheme } from "@/theme";
 import { useHomeStyles } from "../use-home-styles";
 
 type HomeSearchProps = {
@@ -12,7 +12,11 @@ type HomeSearchProps = {
 
 export default function HomeSearch({ onSearchChange }: HomeSearchProps) {
   const { t, language } = useLanguage();
+  const { colorScheme } = useTheme();
+
+  const colors = getColors(colorScheme);
   const styles = useHomeStyles();
+
   const [search, setSearch] = useState("");
 
   const handleSearchChange = (value: string) => {
