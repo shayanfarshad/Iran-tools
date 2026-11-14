@@ -1,0 +1,7 @@
+{
+  "build": {
+    "development": { "developmentClient": true, "distribution": "internal" },
+    "bazaar": { "android": { "buildType": "apk" }, "env": { "IRAN_TOOLS_STORE": "bazaar" } },
+    "myket": { "android": { "buildType": "apk" }, "env": { "IRAN_TOOLS_STORE": "myket" } }
+  }
+}

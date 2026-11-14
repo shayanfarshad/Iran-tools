@@ -10,13 +10,15 @@ import { createHomeStyles } from "@/features/home/home.styles";
 import { tools } from "@/features/tools/tools";
 import { useLanguage } from "@/lib/providers/language-provider";
 import { usePremium } from "@/lib/providers/premium-provider";
+import { getColors, useTheme } from "@/theme";
 
 export default function HomeScreen() {
   const { t, language } = useLanguage();
   const { isPremium } = usePremium();
+  const { colorScheme } = useTheme();
+  const themeColors = getColors(colorScheme);
 
-  const styles = createHomeStyles(language);
-
+  const styles = createHomeStyles(language, themeColors);
   const [search, setSearch] = useState("");
 
   const filteredTools = useMemo(() => {

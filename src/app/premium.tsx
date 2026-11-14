@@ -1,21 +1,33 @@
+import { usePremium } from "@/lib/providers/premium-provider";
+import { Ionicons } from "@expo/vector-icons";
+import { router } from "expo-router";
 import { Pressable, StyleSheet, Text, View } from "react-native";
 
 import ScreenContainer from "@/components/screen-scroll-container";
 import { useLanguage } from "@/lib/providers/language-provider";
-import { colors, getTypography, radius, spacing } from "@/theme";
-import { Ionicons } from "@expo/vector-icons";
-import { router } from "expo-router";
+import {
+    getColors,
+    getTypography,
+    radius,
+    spacing,
+    useTheme,
+    type ThemeColors,
+} from "@/theme";
 
 export default function PremiumScreen() {
   const { t, language } = useLanguage();
-  const styles = createPremiumStyles(language);
+  const { isPremium, isBusy, isAvailable, price, error, purchase, restore } = usePremium();
+  const { colorScheme } = useTheme();
+
+  const themeColors = getColors(colorScheme);
+  const styles = createPremiumStyles(language, themeColors);
 
   return (
     <ScreenContainer>
       <View style={styles.container}>
         <View style={styles.backButtonRow}>
           <Pressable onPress={() => router.back()} style={styles.backButton}>
-            <Ionicons name="arrow-back" size={32} color={colors.text} />
+            <Ionicons name="arrow-back" size={32} color={themeColors.text} />
           </Pressable>
         </View>
 
@@ -28,25 +40,28 @@ export default function PremiumScreen() {
 
           <Text style={styles.benefit}>✓ {t("premiumBenefit1")}</Text>
           <Text style={styles.benefit}>✓ {t("premiumBenefit2")}</Text>
-          <Text style={styles.benefit}>✓ {t("premiumBenefit3")}</Text>
           <Text style={styles.benefit}>✓ {t("premiumBenefit4")}</Text>
         </View>
 
         <View style={styles.upgradeSection}>
-          <View style={styles.upgradeButton}>
-            <Text style={styles.upgradeButtonText}>
-              {t("premiumComingSoon")}
-            </Text>
-          </View>
-
-          <Text style={styles.upgradeHint}>{t("premiumComingSoonHint")}</Text>
+          <Text style={styles.upgradeHint}>{t("premiumLifetimeHint")}</Text>
+          {isPremium ? <Text style={styles.benefitsTitle}>{t("premiumActive")}</Text> : (
+            <Pressable accessibilityRole="button" disabled={!isAvailable || isBusy} onPress={() => void purchase()} style={[styles.upgradeButton, (!isAvailable || isBusy) && { opacity: 0.5 }]}>
+              <Text style={styles.upgradeButtonText}>{isBusy ? t("billingLoading") : `${t("premiumBuy")}${price ? ` — ${price}` : ""}`}</Text>
+            </Pressable>
+          )}
+          <Pressable accessibilityRole="button" disabled={!isAvailable || isBusy} onPress={() => void restore()} style={styles.restoreButton}>
+            <Text style={styles.benefit}>{t("premiumRestore")}</Text>
+          </Pressable>
+          {!isAvailable && <Text style={styles.upgradeHint}>{t("billingUnavailable")}</Text>}
+          {error && <Text accessibilityRole="alert" style={styles.upgradeHint}>{t("billingError")}</Text>}
         </View>
       </View>
     </ScreenContainer>
   );
 }
 
-function createPremiumStyles(language: "fa" | "en") {
+function createPremiumStyles(language: "fa" | "en", colors: ThemeColors) {
   const typography = getTypography(language);
 
   return StyleSheet.create({
@@ -102,6 +117,12 @@ function createPremiumStyles(language: "fa" | "en") {
     upgradeButtonText: {
       ...typography.bodyMedium,
       color: colors.white,
+    },
+    restoreButton: {
+      minHeight: 48,
+      alignItems: "center",
+      justifyContent: "center",
+      marginTop: spacing.md,
     },
     upgradeHint: {
       ...typography.caption,

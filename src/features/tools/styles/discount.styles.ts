@@ -1,0 +1,215 @@
+import { getTypography, radius, spacing, type ThemeColors } from "@/theme";
+import { StyleSheet } from "react-native";
+
+export function createDiscountStyles(
+  language: "fa" | "en",
+  colors: ThemeColors,
+) {
+  const typography = getTypography(language);
+
+  return StyleSheet.create({
+    container: {
+      padding: spacing.lg,
+      paddingBottom: spacing.xxl,
+      gap: spacing.md,
+      backgroundColor: colors.background,
+    },
+    title: {
+      ...typography.bold,
+      fontSize: 24,
+      color: colors.text,
+    },
+    hint: {
+      ...typography.regular,
+      fontSize: 14,
+      lineHeight: 23,
+      color: colors.textMuted,
+    },
+    modeContainer: {
+      flexDirection: "row",
+      width: "100%",
+      gap: 6,
+      alignItems: "stretch",
+    },
+    modeButton: {
+      flex: 1,
+      minWidth: 0,
+      minHeight: 76,
+      paddingHorizontal: 2,
+      paddingVertical: spacing.sm,
+      alignItems: "center",
+      justifyContent: "center",
+      borderRadius: radius.md,
+      borderWidth: 1,
+      borderColor: colors.border,
+      backgroundColor: colors.surface,
+    },
+    activeModeButton: {
+      borderColor: colors.primary,
+      backgroundColor: colors.primary + "18",
+    },
+    modeText: {
+      ...typography.regular,
+      fontSize: 12,
+      lineHeight: 17,
+      color: colors.text,
+      flexShrink: 1,
+    },
+    activeModeText: {
+      color: colors.primary,
+    },
+    currencyContainer: {
+      flexDirection: "row",
+      gap: spacing.sm,
+    },
+    currencyButton: {
+      flex: 1,
+      minHeight: 42,
+      alignItems: "center",
+      justifyContent: "center",
+      borderWidth: 1,
+      borderColor: colors.border,
+      borderRadius: radius.md,
+      backgroundColor: colors.surface,
+    },
+    activeCurrencyButton: {
+      borderColor: colors.primary,
+      backgroundColor: colors.primary,
+    },
+    currencyText: {
+      ...typography.regular,
+      color: colors.text,
+      fontSize: 14,
+    },
+    activeCurrencyText: {
+      color: "#FFFFFF",
+    },
+    formCard: {
+      padding: spacing.lg,
+      gap: spacing.sm,
+      borderRadius: radius.lg,
+      backgroundColor: colors.surface,
+      borderWidth: 1,
+      borderColor: colors.border,
+    },
+    label: {
+      ...typography.regular,
+      fontSize: 14,
+      color: colors.text,
+      marginTop: spacing.xs,
+    },
+    inputWrapper: {
+      width: "100%",
+      minHeight: 50,
+      flexDirection: "row",
+      flexWrap: "nowrap",
+      alignItems: "center",
+      paddingHorizontal: spacing.md,
+      borderRadius: radius.md,
+      borderWidth: 1,
+      borderColor: colors.border,
+      backgroundColor: colors.background,
+    },
+    input: {
+      ...typography.body,
+      flex: 1,
+      minWidth: 0,
+      minHeight: 48,
+      paddingHorizontal: 0,
+      paddingVertical: spacing.sm,
+      color: colors.text,
+      fontSize: 16,
+    },
+    inputSuffix: {
+      ...typography.regular,
+      fontSize: 13,
+      color: colors.textMuted,
+      marginStart: spacing.sm,
+      flexShrink: 0,
+      alignSelf: "center",
+    },
+    clearButton: {
+      minHeight: 44,
+      alignItems: "center",
+      justifyContent: "center",
+      marginTop: spacing.sm,
+      borderRadius: radius.md,
+      backgroundColor: colors.background,
+    },
+    clearButtonText: {
+      ...typography.regular,
+      fontSize: 14,
+      color: colors.textMuted,
+    },
+    resultCard: {
+      padding: spacing.lg,
+      gap: spacing.md,
+      borderRadius: radius.lg,
+      backgroundColor: colors.surface,
+      borderWidth: 1,
+      borderColor: colors.border,
+    },
+    resultTitle: {
+      ...typography.bold,
+      fontSize: 17,
+      color: colors.text,
+    },
+    summaryCard: {
+      padding: spacing.md,
+      gap: spacing.xs,
+      borderRadius: radius.md,
+      backgroundColor: colors.primary + "15",
+    },
+    summaryLabel: {
+      ...typography.regular,
+      fontSize: 13,
+      color: colors.textMuted,
+    },
+    summaryValue: {
+      ...typography.bold,
+      fontSize: 22,
+      color: colors.primary,
+    },
+    resultRow: {
+      flexDirection: "row",
+      alignItems: "center",
+      justifyContent: "space-between",
+      gap: spacing.sm,
+      paddingVertical: spacing.sm,
+      borderBottomWidth: 1,
+      borderBottomColor: colors.border,
+    },
+    lastResultRow: {
+      borderBottomWidth: 0,
+      paddingBottom: 0,
+    },
+    resultLabel: {
+      flex: 1,
+      ...typography.regular,
+      fontSize: 13,
+      color: colors.textMuted,
+    },
+    resultValue: {
+      ...typography.regular,
+      fontSize: 14,
+      color: colors.text,
+    },
+    discountValue: {
+      color: colors.success,
+    },
+    emptyText: {
+      ...typography.regular,
+      fontSize: 14,
+      lineHeight: 22,
+      color: colors.textMuted,
+      paddingVertical: spacing.lg,
+    },
+    errorText: {
+      ...typography.regular,
+      fontSize: 13,
+      lineHeight: 21,
+      color: colors.danger,
+      marginTop: spacing.xs,
+    },
+  });
+}

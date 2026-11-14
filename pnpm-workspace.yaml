@@ -1,0 +1,3 @@
+patchedDependencies:
+  '@cafebazaar/react-native-poolakey@3.1.2': patches/@cafebazaar__react-native-poolakey@3.1.2.patch
+  iab-myket-reactnative@2.2.0: patches/iab-myket-reactnative@2.2.0.patch

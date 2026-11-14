@@ -4,10 +4,17 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
+patchedDependencies:
+  '@cafebazaar/react-native-poolakey@3.1.2': 0e093fb68f83c885106185927a5c7128f94a3568e173178817541e9721a01785
+  iab-myket-reactnative@2.2.0: b99b4a8176032d8ad7b389020e7f004b27af992354a994120ae0f0a8e34547c6
+
 importers:
 
   .:
     dependencies:
+      '@cafebazaar/react-native-poolakey':
+        specifier: ^3.1.2
+        version: 3.1.2(patch_hash=0e093fb68f83c885106185927a5c7128f94a3568e173178817541e9721a01785)(react-native@0.88.1(@babel/core@7.29.13(supports-color@8.1.1))(@react-native/metro-config@0.88.1(@babel/core@7.29.13(supports-color@8.1.1))(supports-color@8.1.1))(@types/react@19.3.0)(react@19.3.0)(supports-color@8.1.1))(react@19.3.0)
       '@expo-google-fonts/estedad':
         specifier: ^0.4.0
         version: 0.4.0
@@ -68,6 +75,9 @@ importers:
       expo-web-browser:
         specifier: ~58.0.7
         version: 58.0.7(expo@58.0.23)(react-native@0.88.1(@babel/core@7.29.13(supports-color@8.1.1))(@react-native/metro-config@0.88.1(@babel/core@7.29.13(supports-color@8.1.1))(supports-color@8.1.1))(@types/react@19.3.0)(react@19.3.0)(supports-color@8.1.1))
+      iab-myket-reactnative:
+        specifier: ^2.2.0
+        version: 2.2.0(patch_hash=b99b4a8176032d8ad7b389020e7f004b27af992354a994120ae0f0a8e34547c6)(react-native@0.88.1(@babel/core@7.29.13(supports-color@8.1.1))(@react-native/metro-config@0.88.1(@babel/core@7.29.13(supports-color@8.1.1))(supports-color@8.1.1))(@types/react@19.3.0)(react@19.3.0)(supports-color@8.1.1))(react@19.3.0)
       react:
         specifier: 19.3.0
         version: 19.3.0
@@ -504,6 +514,13 @@ packages:
   '@babel/types@7.29.11':
     resolution: {integrity: sha512-WCsemW40Cpc6gouC1SrY6PBaZ+oLRlEVY9XBvZBI7il/HyUrb2nJ505wE1MHEFyDZNnrWDEuy4jL50WVHfTTSQ==}
     engines: {node: '>=6.9.0'}
+
+  '@cafebazaar/react-native-poolakey@3.1.2':
+    resolution: {integrity: sha512-rzn2hhrm26FyryJYNzvLXAIQgx6U+0mIJ8q8Zd4QUS2zH0VqO5RwTjpElzaIyMZB04M1oMyuALYeb9m2D+JX2g==}
+    engines: {node: '>= 18.0.0'}
+    peerDependencies:
+      react: '*'
+      react-native: '*'
 
   '@eslint-community/eslint-utils@4.10.1':
     resolution: {integrity: sha512-cuadcxVFE8sDK6iWJbs8Sn0av2Nrh2QSGQhVlBW9AaAHqHwjWsZHT8LJ4hFGPh7ASBV2deFdM7H/DPjulmh8rg==}
@@ -2419,6 +2436,12 @@ packages:
   hyphenate-style-name@1.1.0:
     resolution: {integrity: sha512-WDC/ui2VVRrz3jOVi+XtjqkDjiVjTtFaAGiW37k6b+ohyQ5wYDOGkvCZa8+H0nx3gyvv0+BST9xuOgIyGQ00gw==}
 
+  iab-myket-reactnative@2.2.0:
+    resolution: {integrity: sha512-m4+Lb7d+2JCtq1C9q3addidV3Yr9oQ38HKOhi6TiGzJ0WXqPkQxVFFxGugFz6e1+BorjIyVJaMTtegJHjhEXaA==}
+    peerDependencies:
+      react: '*'
+      react-native: '*'
+
   ignore@5.3.2:
     resolution: {integrity: sha512-hsBTNUqQTDwkWtcdYI2i06Y/nUBEsNEDJKjWdigLvegy8kDuJAS8uRlpkkcQpyEXL0Z/pjDy5HBmMjRCJ2gq+g==}
     engines: {node: '>= 4'}
@@ -4324,6 +4347,11 @@ snapshots:
     dependencies:
       '@babel/helper-string-parser': 7.29.13
       '@babel/helper-validator-identifier': 7.29.7
+
+  '@cafebazaar/react-native-poolakey@3.1.2(patch_hash=0e093fb68f83c885106185927a5c7128f94a3568e173178817541e9721a01785)(react-native@0.88.1(@babel/core@7.29.13(supports-color@8.1.1))(@react-native/metro-config@0.88.1(@babel/core@7.29.13(supports-color@8.1.1))(supports-color@8.1.1))(@types/react@19.3.0)(react@19.3.0)(supports-color@8.1.1))(react@19.3.0)':
+    dependencies:
+      react: 19.3.0
+      react-native: 0.88.1(@babel/core@7.29.13(supports-color@8.1.1))(@react-native/metro-config@0.88.1(@babel/core@7.29.13(supports-color@8.1.1))(supports-color@8.1.1))(@types/react@19.3.0)(react@19.3.0)(supports-color@8.1.1)
 
   '@eslint-community/eslint-utils@4.10.1(eslint@9.39.5(supports-color@8.1.1))':
     dependencies:
@@ -6649,6 +6677,11 @@ snapshots:
       - supports-color
 
   hyphenate-style-name@1.1.0: {}
+
+  iab-myket-reactnative@2.2.0(patch_hash=b99b4a8176032d8ad7b389020e7f004b27af992354a994120ae0f0a8e34547c6)(react-native@0.88.1(@babel/core@7.29.13(supports-color@8.1.1))(@react-native/metro-config@0.88.1(@babel/core@7.29.13(supports-color@8.1.1))(supports-color@8.1.1))(@types/react@19.3.0)(react@19.3.0)(supports-color@8.1.1))(react@19.3.0):
+    dependencies:
+      react: 19.3.0
+      react-native: 0.88.1(@babel/core@7.29.13(supports-color@8.1.1))(@react-native/metro-config@0.88.1(@babel/core@7.29.13(supports-color@8.1.1))(supports-color@8.1.1))(@types/react@19.3.0)(react@19.3.0)(supports-color@8.1.1)
 
   ignore@5.3.2: {}
 

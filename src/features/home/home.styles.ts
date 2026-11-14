@@ -1,8 +1,12 @@
 import { StyleSheet } from "react-native";
 
-import { colors, getTypography, radius, spacing } from "@/theme";
+import type { ThemeColors } from "@/theme";
+import { getTypography, radius, spacing } from "@/theme";
 
-export const createHomeStyles = (language: "fa" | "en") => {
+export const createHomeStyles = (
+  language: "fa" | "en",
+  colors: ThemeColors,
+) => {
   const typography = getTypography(language);
 
   return StyleSheet.create({

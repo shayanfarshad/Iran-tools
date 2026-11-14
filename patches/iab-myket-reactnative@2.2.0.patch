@@ -1,0 +1,26 @@
+diff --git a/android/build.gradle.kts b/android/build.gradle.kts
+index 41588440d2490a4465aa8aec4f451c3132deda9f..c1da17845dd86b4cb8a58374f8f86a619102b9f1 100644
+--- a/android/build.gradle.kts
++++ b/android/build.gradle.kts
+@@ -1,8 +1,8 @@
+ import java.io.File
+ 
+ plugins {
+-  alias(libs.plugins.android.library)
+-  alias(libs.plugins.kotlin.android)
++  id("com.android.library")
++  id("org.jetbrains.kotlin.android")
+ }
+ 
+ kotlin {
+@@ -89,7 +89,7 @@ repositories {
+ 
+ dependencies {
+ 
+-  api(libs.react.native)
+-  implementation(libs.kotlin.stdlib)
+-  implementation(libs.myket.billing)
++  implementation("com.facebook.react:react-android")
++  implementation(kotlin("stdlib"))
++  implementation("ir.myket:billing:2.2")
+ }

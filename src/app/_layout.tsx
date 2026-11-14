@@ -17,24 +17,31 @@ import {
 } from "@/lib/providers/language-provider";
 import { PremiumProvider } from "@/lib/providers/premium-provider";
 
+import { ThemeProvider, useTheme } from "@/lib/providers/theme-provider";
+import { getColors } from "@/theme/colors";
 import { LocaleProvider, Stack } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 
 function AppNavigator() {
   const { direction, isReady } = useLanguage();
+  const { colorScheme, isThemeReady } = useTheme();
+  const themeColors = getColors(colorScheme);
 
-  if (!isReady) {
+  if (!isReady || !isThemeReady) {
     return null;
   }
 
   return (
     <SafeAreaProvider>
       <LocaleProvider direction={direction}>
-        <StatusBar style="dark" />
+        <StatusBar style={colorScheme === "dark" ? "light" : "dark"} />
         <Stack
           screenOptions={{
             headerShown: false,
+            contentStyle: {
+              backgroundColor: themeColors.background,
+            },
           }}
         />
       </LocaleProvider>
@@ -58,10 +65,12 @@ export default function RootLayout() {
   }
 
   return (
-    <LanguageProvider>
-      <PremiumProvider>
-        <AppNavigator />
-      </PremiumProvider>
-    </LanguageProvider>
+    <ThemeProvider>
+      <LanguageProvider>
+        <PremiumProvider>
+          <AppNavigator />
+        </PremiumProvider>
+      </LanguageProvider>
+    </ThemeProvider>
   );
 }
