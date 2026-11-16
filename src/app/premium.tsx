@@ -44,7 +44,7 @@ export default function PremiumScreen() {
         </View>
 
         <View style={styles.upgradeSection}>
-          <Text style={styles.upgradeHint}>{t("premiumLifetimeHint")}</Text>
+          <Text style={styles.upgradeHint}>{t("premiumDurationHint")}</Text>
           {isPremium ? <Text style={styles.benefitsTitle}>{t("premiumActive")}</Text> : (
             <Pressable accessibilityRole="button" disabled={!isAvailable || isBusy} onPress={() => void purchase()} style={[styles.upgradeButton, (!isAvailable || isBusy) && { opacity: 0.5 }]}>
               <Text style={styles.upgradeButtonText}>{isBusy ? t("billingLoading") : `${t("premiumBuy")}${price ? ` — ${price}` : ""}`}</Text>

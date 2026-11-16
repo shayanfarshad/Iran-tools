@@ -33,6 +33,7 @@
     "react-dom": "19.3.0",
     "react-native": "0.88.1",
     "react-native-gesture-handler": "~3.3.0",
+    "react-native-keyboard-controller": "1.22.7",
     "react-native-reanimated": "4.7.1",
     "react-native-safe-area-context": "~5.11.1",
     "react-native-screens": "~4.30.1",
@@ -49,6 +50,8 @@
     "start": "expo start",
     "reset-project": "node ./scripts/reset-project.js",
     "android": "expo run:android",
+    "android:bazaar": "IRAN_TOOLS_STORE=bazaar expo run:android --variant release",
+    "start:bazaar": "IRAN_TOOLS_STORE=bazaar expo start --dev-client",
     "ios": "expo run:ios",
     "web": "expo start --web",
     "lint": "expo lint"

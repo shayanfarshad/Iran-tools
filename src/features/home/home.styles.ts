@@ -16,7 +16,7 @@ export const createHomeStyles = (
     },
     container: {
       paddingHorizontal: spacing.lg,
-      paddingBottom: spacing.xxxl,
+      paddingBottom: spacing.bottom,
     },
     header: {
       flexDirection: "row",

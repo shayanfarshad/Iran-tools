@@ -17,7 +17,7 @@ export function createPercentageStyles(
 
     container: {
       paddingHorizontal: spacing.lg,
-      paddingBottom: spacing.xl,
+      paddingBottom: spacing.bottom,
     },
 
     title: {

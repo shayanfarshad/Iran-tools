@@ -33,7 +33,7 @@ export const tools: readonly ToolDefinition[] = [
     titleKey: "vehicleBook",
     descriptionKey: "vehicleBookDescription",
     route: "/tools/vehicle-book",
-    access: "free",
+    access: "premium",
     icon: "car-outline",
   },
   {
@@ -41,7 +41,7 @@ export const tools: readonly ToolDefinition[] = [
     titleKey: "tripSplit",
     descriptionKey: "tripSplitDescription",
     route: "/tools/trip-split",
-    access: "free",
+    access: "premium",
     icon: "airplane-outline",
   },
   {
@@ -129,7 +129,7 @@ export const tools: readonly ToolDefinition[] = [
     titleKey: "installmentBook",
     descriptionKey: "installmentBookDescription",
     route: "/tools/installment-book",
-    access: "free",
+    access: "premium",
     icon: "receipt-outline",
   },
 ];

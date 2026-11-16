@@ -21,7 +21,6 @@ export default function HomeToolsSection({ tools }: HomeToolsSectionProps) {
     <>
       <View style={styles.sectionHeader}>
         <Text style={styles.sectionTitle}>{t("toolsTitle")}</Text>
-        <Text style={styles.toolCount}>{tools.length}</Text>
       </View>
 
       {tools.length > 0 ? (

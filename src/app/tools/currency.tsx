@@ -1,5 +1,4 @@
 import LiveExchange from "@/features/tools/components/live-exchange";
-import { Redirect } from "expo-router";
 import { useState } from "react";
 import { Pressable, Text, View } from "react-native";
 
@@ -15,11 +14,9 @@ import { createDiscountStyles } from "@/features/tools/styles/discount.styles";
 import { formatNumber } from "@/features/tools/utils/number-format";
 import { parseNumber } from "@/features/tools/utils/number-parser";
 import { useLanguage } from "@/lib/providers/language-provider";
-import { usePremium } from "@/lib/providers/premium-provider";
 import { getColors, useTheme } from "@/theme";
 export default function CurrencyScreen() {
   const { t, language } = useLanguage();
-  const { isPremium, isReady } = usePremium();
   const { colorScheme } = useTheme();
   const colors = getColors(colorScheme);
   const styles = createDiscountStyles(language, colors);
@@ -34,8 +31,6 @@ export default function CurrencyScreen() {
   const invalid =
     amount.length > 0 && (result === null || !Number.isFinite(result));
 
-  if (!isReady) return null;
-  if (isPremium) return <Redirect href="/premium" />;
 
   return (
     <ScreenScrollContainer contentContainerStyle={styles.container}>

@@ -1,3 +1,5 @@
+import AppKeyboardProvider from "@/components/keyboard/app-keyboard-provider";
+import { StartupSplash } from "@/components/startup-splash";
 import { VehicleReminderProvider } from "@/features/vehicles/reminder-provider";
 import { InstallmentReminderProvider } from "@/features/installments/reminder-provider";
 import {
@@ -22,37 +24,38 @@ import { PremiumProvider } from "@/lib/providers/premium-provider";
 import { ThemeProvider, useTheme } from "@/lib/providers/theme-provider";
 import { getColors } from "@/theme/colors";
 import { LocaleProvider, Stack } from "expo-router";
-import { StatusBar } from "expo-status-bar";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 
-function AppNavigator() {
+function AppNavigator({ fontsReady }: { fontsReady: boolean }) {
   const { direction, isReady } = useLanguage();
   const { colorScheme, isThemeReady } = useTheme();
   const themeColors = getColors(colorScheme);
 
-  if (!isReady || !isThemeReady) {
-    return null;
-  }
-
   return (
-    <SafeAreaProvider>
-      <LocaleProvider direction={direction}>
-        <StatusBar style={colorScheme === "dark" ? "light" : "dark"} />
-        <Stack
-          screenOptions={{
-            headerShown: false,
-            contentStyle: {
-              backgroundColor: themeColors.background,
-            },
-          }}
-        />
-      </LocaleProvider>
-    </SafeAreaProvider>
+    <StartupSplash
+      ready={fontsReady && isReady && isThemeReady}
+      statusBarStyle={colorScheme === "dark" ? "light" : "dark"}
+    >
+      <SafeAreaProvider>
+        <AppKeyboardProvider>
+          <LocaleProvider direction={direction}>
+            <Stack
+              screenOptions={{
+                headerShown: false,
+                contentStyle: {
+                  backgroundColor: themeColors.background,
+                },
+              }}
+            />
+          </LocaleProvider>
+        </AppKeyboardProvider>
+      </SafeAreaProvider>
+    </StartupSplash>
   );
 }
 
 export default function RootLayout() {
-  const [fontsLoaded] = useFonts({
+  const [fontsLoaded, fontError] = useFonts({
     EstedadThin: Estedad_100Thin,
     EstedadRegular: Estedad_400Regular,
     EstedadBold: Estedad_700Bold,
@@ -62,17 +65,13 @@ export default function RootLayout() {
     InterBold: Inter_700Bold,
   });
 
-  if (!fontsLoaded) {
-    return null;
-  }
-
   return (
     <ThemeProvider>
       <LanguageProvider>
         <PremiumProvider>
           <InstallmentReminderProvider>
             <VehicleReminderProvider>
-              <AppNavigator />
+              <AppNavigator fontsReady={fontsLoaded || Boolean(fontError)} />
             </VehicleReminderProvider>
           </InstallmentReminderProvider>
         </PremiumProvider>

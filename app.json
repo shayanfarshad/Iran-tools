@@ -1,22 +1,21 @@
 {
   "expo": {
-    "name": "iran-tools",
+    "name": "Iran Tools",
     "slug": "iran-tools",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/icon.png",
+    "icon": "./assets/images/iran-tools-icon.png",
     "scheme": "irantools",
     "userInterfaceStyle": "automatic",
     "ios": {
       "bundleIdentifier": "com.shayanfarshad.irantools",
-      "icon": "./assets/expo.icon"
+      "icon": "./assets/images/iran-tools-icon.png"
     },
     "android": {
+      "package": "com.shayanfarshad.irantools",
       "adaptiveIcon": {
-        "backgroundColor": "#E6F4FE",
-        "foregroundImage": "./assets/images/android-icon-foreground.png",
-        "backgroundImage": "./assets/images/android-icon-background.png",
-        "monochromeImage": "./assets/images/android-icon-monochrome.png"
+        "backgroundColor": "#fafafa",
+        "foregroundImage": "./assets/images/iran-tools-adaptive-foreground.png"
       },
       "predictiveBackGestureEnabled": false
     },
@@ -29,9 +28,12 @@
       [
         "expo-splash-screen",
         {
-          "backgroundColor": "#208AEF",
-          "image": "./assets/images/splash-icon.png",
-          "imageWidth": 76
+          "backgroundColor": "#305976",
+          "ios": {
+            "image": "./assets/images/splash-full.png",
+            "resizeMode": "cover",
+            "enableFullScreenImage_legacy": true
+          }
         }
       ],
       [
@@ -40,14 +42,8 @@
           "supportsRTL": true,
           "forcesRTL": false,
           "supportedLocales": {
-            "ios": [
-              "fa",
-              "en"
-            ],
-            "android": [
-              "fa",
-              "en"
-            ]
+            "ios": ["fa", "en"],
+            "android": ["fa", "en"]
           }
         }
       ],
