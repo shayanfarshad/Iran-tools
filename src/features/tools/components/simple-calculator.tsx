@@ -4,9 +4,7 @@ import ClearInputsButton from "@/components/ui/clear-inputs-button";
 import NumericInput from "@/components/ui/numeric-input";
 import type { TranslationKey } from "@/lib/i18n/translations";
 import { useLanguage } from "@/lib/providers/language-provider";
-import { usePremium } from "@/lib/providers/premium-provider";
 import { getColors, spacing, useTheme } from "@/theme";
-import { Redirect } from "expo-router";
 import { useState } from "react";
 import { Text, View } from "react-native";
 import { createLoanStyles } from "../styles/loan.styles";
@@ -31,7 +29,6 @@ export default function SimpleCalculator({
   errorKey = "toolsInvalidInputs",
 }: Props) {
   const { t, language } = useLanguage();
-  const { isPremium, isReady } = usePremium();
   const { colorScheme } = useTheme();
   const colors = getColors(colorScheme);
   const styles = createLoanStyles(language, colors);
@@ -49,8 +46,6 @@ export default function SimpleCalculator({
       }
     }
   }
-  if (!isReady) return null;
-  if (isPremium) return <Redirect href="/premium" />;
   return (
     <ScreenScrollContainer
       style={styles.screen}

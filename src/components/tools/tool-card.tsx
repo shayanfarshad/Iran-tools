@@ -1,5 +1,5 @@
 import { Ionicons } from "@expo/vector-icons";
-import { Pressable, StyleSheet, Text, View } from "react-native";
+import { Pressable, StyleSheet, Text, View, useWindowDimensions } from "react-native";
 
 import { useLanguage } from "@/lib/providers/language-provider";
 import { getColors, getTypography, radius, spacing, useTheme } from "@/theme";
@@ -25,9 +25,10 @@ export default function ToolCard({
 }: ToolCardProps) {
   const { language } = useLanguage();
   const { colorScheme } = useTheme();
+  const { fontScale } = useWindowDimensions();
 
   const themeColors = getColors(colorScheme);
-  const styles = createToolCardStyles(language, themeColors);
+  const styles = createToolCardStyles(language, themeColors, fontScale);
 
   return (
     <Pressable
@@ -53,20 +54,29 @@ export default function ToolCard({
         )}
       </View>
 
-      <Text style={styles.title}>{title}</Text>
+      <Text style={styles.title} numberOfLines={1} ellipsizeMode="tail">
+        {title}
+      </Text>
 
-      <Text style={styles.description}>{description}</Text>
+      <Text style={styles.description} numberOfLines={2} ellipsizeMode="tail">
+        {description}
+      </Text>
     </Pressable>
   );
 }
 
-function createToolCardStyles(language: "fa" | "en", colors: ThemeColors) {
+function createToolCardStyles(
+  language: "fa" | "en",
+  colors: ThemeColors,
+  fontScale: number,
+) {
   const typography = getTypography(language);
 
   return StyleSheet.create({
     card: {
       width: "100%",
-      minHeight: 150,
+      // Reserve one title line and two description lines at every font size.
+      height: 160 + 62 * (Math.max(1, fontScale) - 1),
       backgroundColor: colors.surface,
       borderRadius: radius.lg,
       borderWidth: 1,
@@ -89,6 +99,7 @@ function createToolCardStyles(language: "fa" | "en", colors: ThemeColors) {
     },
     title: {
       ...typography.bodyMedium,
+      lineHeight: 24,
       color: colors.text,
       marginBottom: spacing.xs,
     },

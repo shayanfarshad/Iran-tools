@@ -1,7 +1,8 @@
-import { ScrollView, StyleProp, StyleSheet, ViewStyle } from "react-native";
+import { StyleSheet, type StyleProp, type ViewStyle } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 import { getColors, useTheme } from "@/theme";
+import KeyboardScrollView from "./keyboard/keyboard-scroll-view";
 
 type ScreenScrollContainerProps = {
   children: React.ReactNode;
@@ -28,13 +29,13 @@ export default function ScreenScrollContainer({
   });
 
   return (
-    <ScrollView
+    <KeyboardScrollView
       contentContainerStyle={contentContainerStyle}
       keyboardShouldPersistTaps="handled"
       showsVerticalScrollIndicator={false}
       style={[styles.container, style]}
     >
       {children}
-    </ScrollView>
+    </KeyboardScrollView>
   );
 }

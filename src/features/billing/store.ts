@@ -25,11 +25,17 @@ export async function runBilling(purchase: boolean): Promise<BillingResult> {
       try {
         // A nonempty key enables the SDK's local RSA signature verification.
         await sdk.connect(config.publicKey);
-        if (purchase) await sdk.purchaseProduct(config.productId);
-        const purchases = await sdk.getPurchasedProducts();
-        const owned = purchases.some(product => validPurchase(product, config));
+        const purchases = await sdk.getSubscribedProducts();
+        let owned = purchases.some(product => validPurchase(product, config));
+        if (purchase && !owned) {
+          const receipt = await sdk.subscribeProduct(config.productId);
+          if (!receipt || !validPurchase(receipt, config)) throw new Error("billing-invalid-receipt");
+          // The SDK verifies the signature. Subscriptions must never be consumed.
+          // Use the returned receipt so a second inventory request cannot lose a successful purchase.
+          owned = true;
+        }
         let price: string | null = null;
-        try { price = (await sdk.getInAppSkuDetails([config.productId])).find(product => product.sku === config.productId)?.price ?? null; } catch { /* Ownership does not depend on price availability. */ }
+        try { price = (await sdk.getSubscriptionSkuDetails([config.productId])).find(product => product.sku === config.productId)?.price ?? null; } catch { /* Ownership does not depend on price availability. */ }
         return { owned, price };
       } finally { await sdk.disconnect().catch(() => undefined); }
     }

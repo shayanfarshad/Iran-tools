@@ -14,7 +14,7 @@ export function createProfitLossStyles(
     },
     container: {
       paddingHorizontal: spacing.lg,
-      paddingBottom: spacing.xxxl,
+      paddingBottom: spacing.bottom,
     },
     title: {
       ...typography.title,

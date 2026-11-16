@@ -14,7 +14,7 @@ export function createLoanStyles(language: Language, colors: ThemeColors) {
 
     container: {
       padding: spacing.lg,
-      paddingBottom: spacing.xl,
+      paddingBottom: spacing.bottom,
       gap: spacing.md,
       backgroundColor: colors.background,
     },

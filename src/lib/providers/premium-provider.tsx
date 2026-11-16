@@ -1,5 +1,6 @@
 import { createContext, useCallback, useContext, useEffect, useRef, useState, type ReactNode } from "react";
 import { getBillingConfig, runBilling } from "@/features/billing/store";
+import { AppState } from "react-native";
 
 type PremiumContextValue = {
   isPremium: boolean;
@@ -30,14 +31,33 @@ export function PremiumProvider({ children }: { children: ReactNode }) {
       const result = await runBilling(purchase);
       setPremium(result.owned);
       setPrice(result.price);
-    } catch { setError(true); }
+    } catch (error) {
+      // Poolakey reports backing out of the payment UI as "purchase canceled".
+      const message = error instanceof Error ? error.message : String(error);
+      if (!/purchase cancel(?:ed|led)/i.test(message)) {
+        setError(true);
+        // A failed subscription refresh must not retain access indefinitely.
+        if (!purchase && getBillingConfig()?.store === "bazaar") setPremium(false);
+      }
+    }
     finally { busy.current = false; setBusy(false); setReady(true); }
   }, []);
   useEffect(() => {
     if (!isAvailable) return;
     // Start the native store handshake after the provider has mounted.
     const timer = setTimeout(() => void execute(false), 0);
-    return () => clearTimeout(timer);
+    const subscription = AppState.addEventListener("change", (state) => {
+      if (state === "active") void execute(false);
+    });
+    // Recheck subscriptions even during long foreground sessions.
+    const refresh = setInterval(() => {
+      if (AppState.currentState === "active") void execute(false);
+    }, 5 * 60 * 1000);
+    return () => {
+      clearTimeout(timer);
+      clearInterval(refresh);
+      subscription.remove();
+    };
   }, [isAvailable, execute]);
   return <PremiumContext.Provider value={{ isPremium, isReady, isBusy, isAvailable, price, error, purchase: () => execute(true), restore: () => execute(false) }}>{children}</PremiumContext.Provider>;
 }

@@ -1,17 +1,196 @@
 export const translations = {
   en: {
+    vehicleBook: "Vehicle logbook",
+    vehicleBookDescription: "Track expenses, service and insurance dates",
+    vehicleLocalHint:
+      "Each vehicle has its own expenses and deadlines. Data stays on this device; the installment backup does not include vehicles.",
+    vehicleNew: "Add vehicle",
+    vehicleEdit: "Edit vehicle",
+    vehicleName: "Vehicle name",
+    vehicleNameExample: "For example, my Peugeot 206",
+    vehicleCurrencyLocked:
+      "To keep recorded amounts accurate, the currency stays fixed while expenses exist.",
+    vehicleSave: "Save",
+    vehicleCancel: "Cancel",
+    vehicleDelete: "Delete",
+    vehicleBusy: "Reading or saving…",
+    vehicleStorageError:
+      "Could not read or save changes. Your latest change may not have been saved; please retry.",
+    vehicleRetry: "Retry",
+    vehicleFuel: "Fuel",
+    vehicleMaintenance: "Maintenance",
+    vehicleInsurance: "Insurance",
+    vehicleOther: "Other",
+    vehicleService: "Service",
+    vehicleExpenses: "Expenses",
+    vehicleReminders: "Due dates",
+    vehicleReport: "Monthly report",
+    vehicleAddExpense: "Add expense",
+    vehicleEditExpense: "Edit expense",
+    vehicleExpenseTitle: "Expense title",
+    vehicleExpenseExample: "For example, fuel or an oil change",
+    vehicleAmount: "Amount",
+    vehicleExpenseDate: "Expense date",
+    vehicleOdometer: "Odometer reading (optional)",
+    vehicleMileage: "Odometer",
+    vehicleKm: "km",
+    vehicleSolarDate: "Solar Hijri",
+    vehicleToday: "Today",
+    vehicleExpenseInvalid:
+      "Enter a title, positive whole-number amount and a valid date no later than today. Odometer must be a non-negative whole number or empty. Total amounts must remain within the supported range.",
+    vehicleNoExpenses:
+      "No expenses yet. Add your first fuel, maintenance or insurance expense.",
+    vehicleExpenseDeleteConfirm:
+      "Delete this expense? Your totals will be recalculated.",
+    vehicleDeleteConfirm:
+      "Delete this vehicle, all expenses and all deadlines? This cannot be undone.",
+    vehicleTotal: "Total recorded expenses",
+    vehicleExpenseCount: "Expense count",
+    vehicleNextDue: "Next outstanding deadline",
+    vehicleManage: "Manage vehicle",
+    vehicleClose: "Close details",
+    vehicleMore: "Show more",
+    vehicleAddReminder: "Add deadline",
+    vehicleEditReminder: "Edit deadline",
+    vehicleReminderName: "Deadline title",
+    vehicleReminderExample: "For example, third-party insurance renewal",
+    vehicleDueDate: "Due date",
+    vehicleReminderFormHint:
+      "This is a single deadline based on the date you enter. Enable notifications below the vehicle list for alerts. Past alert times are not scheduled.",
+    vehicleReminderInvalid: "Enter a title and a valid Solar Hijri date.",
+    vehicleReminderCompletionHint:
+      "Completing a deadline cancels its pending alert. Record any cost separately and create a new deadline for the next service or renewal.",
+    vehicleNoReminders:
+      "No deadlines yet. Add an insurance renewal or service date.",
+    vehicleReminderDeleteConfirm:
+      "Delete this deadline and its pending notification?",
+    vehicleDone: "Completed",
+    vehicleOverdue: "Overdue",
+    vehicleDueToday: "Due today",
+    vehicleUpcoming: "Upcoming",
+    vehicleMarkDone: "Mark completed",
+    vehicleUndoDone: "Undo completion",
+    vehicleNoReport: "Add an expense to see your monthly report.",
+    vehiclePreviousMonth: "Previous month",
+    vehicleNextMonth: "Next month",
+    vehicleMonthTotal: "Expenses this month",
+    vehicleReportHint:
+      "Solar Hijri months, based on the expense date. All amounts use this vehicle’s currency.",
+    vehicleNotifications: "Vehicle notifications",
+    vehicleNotificationHint:
+      "Local notifications around 9 AM on each deadline, using your device time zone. Phone settings can delay delivery. This setting applies to all your vehicles.",
+    vehicleNotificationsOn: "Vehicle notifications enabled",
+    vehicleNotificationsOff: "Vehicle notifications disabled",
+    vehicleNotificationsEnable: "Enable vehicle notifications",
+    vehicleNotificationsDisable: "Disable vehicle notifications",
+    vehicleScheduled: "Scheduled notifications",
+    vehicleNotificationLimit:
+      "Some later deadlines do not fit in the device queue. Up to 60 slots are shared with other reminders. Reopen the app regularly to refresh the schedule.",
+    vehicleNotificationError:
+      "Could not update vehicle notifications. Check permissions and retry. Some alerts may still use the previous schedule.",
+    vehicleNotificationSettings: "Phone notification settings",
+    vehicleSettingsError:
+      "Could not open settings. Open your phone’s app settings manually.",
+    vehicleReminderTitle: "Vehicle deadline today",
+    vehicleWebReminders:
+      "Deadlines are saved here; notification delivery is available in the Android and iOS app.",
+
+    installmentReminders: "Due-date reminders",
+    installmentReminderTitle: "Installment due today",
+    installmentReminderHint:
+      "Local reminders around 9 AM on the due date, using your device time zone. Paid installments and reminder times that have already passed are excluded. Delivery may be delayed by phone settings.",
+    installmentReminderOn: "Reminders enabled",
+    installmentReminderOff: "Reminders disabled",
+    installmentReminderScheduled: "Scheduled reminders",
+    installmentReminderLimit:
+      "Only the nearest 60 reminders fit in the queue (fewer if other reminders exist). Open the app regularly to schedule later installments.",
+    installmentReminderError:
+      "Reminders could not be updated. Check notification permissions in phone settings, then retry. Some reminders may still use the previous schedule.",
+    installmentNotificationSettings: "Notification settings",
+    installmentReminderDisable: "Disable reminders",
+    installmentReminderEnable: "Enable reminders",
+    installmentBackup: "Backup and restore",
+    installmentBackupHint:
+      "Export all installment books and recorded payments to a file and save it somewhere safe. Backups are manual and unencrypted. Notification permissions are not included.",
+    installmentBackupExport: "Export backup file",
+    installmentBackupImport: "Choose backup file",
+    installmentBackupCount: "Books in backup",
+    installmentBackupReplaceHint:
+      "Restoring replaces ALL current installment books and payments with this file. Export your current data first if you need to keep it. Other tools are not affected.",
+    installmentBackupReplace: "Replace current books",
+    installmentBackupError:
+      "Could not export or restore the backup. Choose a valid Iran Tools installment backup (up to 5 MB), check storage space, and retry.",
+    installmentBackupRestored: "Installment books and payments restored.",
+
+    tripSplit: "Trip expenses",
+    tripSplitDescription: "Track group expenses and calculate settlements",
+    tripLocalHint:
+      "Trips are stored on this device. Each trip uses one currency; there is no online sharing.",
+    tripBusy: "Reading or saving…",
+    tripStorageError:
+      "Could not read or save your changes. Retry; your last change may not have been saved.",
+    tripRetry: "Retry",
+    tripNew: "New trip",
+    tripName: "Trip name",
+    tripNameExample: "For example, a weekend in Shiraz",
+    tripMembersHint:
+      "Add 2–30 people with distinct names. Members and currency stay fixed after creation.",
+    tripMember: "Member",
+    tripRemoveMember: "Remove member",
+    tripAddMember: "Add member",
+    tripCreate: "Create trip",
+    tripCancel: "Cancel",
+    tripDelete: "Delete",
+    tripDeleteConfirm:
+      "Delete this trip and all its expenses? This cannot be undone.",
+    tripDeleteExpenseConfirm:
+      "Delete this expense? Balances will be recalculated.",
+    tripAddExpense: "Add expense",
+    tripEditExpense: "Edit expense",
+    tripExpenseTitle: "Expense title",
+    tripExpenseExample: "For example, dinner or hotel",
+    tripAmount: "Amount",
+    tripPayer: "Paid by",
+    tripWeighted: "By shares",
+    tripEqual: "Equal split",
+    tripWeightsHint:
+      "Use whole-number weights: 2 means twice the share of 1. Use 0 to exclude someone from this expense.",
+    tripInvalidExpense:
+      "Enter a positive whole-number amount and non-negative whole-number weights. At least one weight must be positive.",
+    tripShares: "Individual shares",
+    tripRoundingHint:
+      "Rounding differences are distributed so shares add up exactly to the expense.",
+    tripSaveExpense: "Save expense",
+    tripExpenseCount: "Expenses",
+    tripOpen: "Manage expenses",
+    tripClose: "Close details",
+    tripTotal: "Total expenses",
+    tripCreditor: "Receives",
+    tripDebtor: "Owes",
+    tripBalanced: "Balanced",
+    tripSettlements: "Suggested settlement",
+    tripSettlementHint:
+      "Based on recorded expenses only. These are suggested transfers, not recorded or completed payments.",
+    tripFrom: "From",
+    tripTo: "To",
+    tripExpenses: "Recorded expenses",
+    tripNoExpenses: "No expenses yet. Add the first expense.",
+    tripMore: "Show more",
+
     installmentEdit: "Edit plan",
     installmentDelete: "Delete plan",
-    installmentDeleteConfirm: "Delete this plan and all its payment records? This cannot be undone.",
+    installmentDeleteConfirm:
+      "Delete this plan and all its payment records? This cannot be undone.",
     installmentCancel: "Cancel",
     installmentNew: "New plan",
     installmentSaveChanges: "Save changes",
-    installmentPaidEditHint: "This plan has recorded payments. You can edit its title. To change the schedule or currency, undo its payments first.",
+    installmentPaidEditHint:
+      "This plan has recorded payments. You can edit its title. To change the schedule or currency, undo its payments first.",
 
-    premiumLifetimeHint:
-      "One payment unlocks all tools. Restore purchases using the same account in the same store.",
+    premiumDurationHint:
+      "Premium access lasts 90 days. Restore purchases using the same account in the same store.",
     premiumActive: "Premium is active",
-    premiumBuy: "Buy lifetime access",
+    premiumBuy: "Buy 90-day access",
     premiumRestore: "Restore purchase",
     billingLoading: "Connecting to store…",
     billingUnavailable: "Purchases are not available in this version yet.",
@@ -275,18 +454,196 @@ export const translations = {
   },
 
   fa: {
+    vehicleBook: "دفتر خودرو",
+    vehicleBookDescription: "ثبت هزینه‌ها و سررسید بیمه و سرویس",
+    vehicleLocalHint:
+      "هر خودرو دفتر هزینه و سررسید مستقل دارد. اطلاعات روی همین دستگاه ذخیره می‌شود؛ پشتیبان دفتر اقساط شامل خودروها نیست.",
+    vehicleNew: "افزودن خودرو",
+    vehicleEdit: "ویرایش خودرو",
+    vehicleName: "نام خودرو",
+    vehicleNameExample: "مثلاً پژو ۲۰۶ من",
+    vehicleCurrencyLocked:
+      "تا وقتی هزینه‌ای ثبت شده، واحد پول ثابت می‌ماند تا مبلغ‌های قبلی تغییر نکنند.",
+    vehicleSave: "ذخیره",
+    vehicleCancel: "انصراف",
+    vehicleDelete: "حذف",
+    vehicleBusy: "در حال خواندن یا ذخیره‌سازی…",
+    vehicleStorageError:
+      "خواندن یا ذخیرهٔ اطلاعات انجام نشد. ممکن است آخرین تغییر ذخیره نشده باشد؛ دوباره تلاش کن.",
+    vehicleRetry: "تلاش دوباره",
+    vehicleFuel: "سوخت",
+    vehicleMaintenance: "سرویس و تعمیرات",
+    vehicleInsurance: "بیمه",
+    vehicleOther: "سایر",
+    vehicleService: "سرویس",
+    vehicleExpenses: "هزینه‌ها",
+    vehicleReminders: "سررسیدها",
+    vehicleReport: "گزارش ماهانه",
+    vehicleAddExpense: "ثبت هزینه",
+    vehicleEditExpense: "ویرایش هزینه",
+    vehicleExpenseTitle: "عنوان هزینه",
+    vehicleExpenseExample: "مثلاً بنزین یا تعویض روغن",
+    vehicleAmount: "مبلغ",
+    vehicleExpenseDate: "تاریخ هزینه",
+    vehicleOdometer: "کیلومتر خودرو (اختیاری)",
+    vehicleMileage: "کیلومتر خودرو",
+    vehicleKm: "کیلومتر",
+    vehicleSolarDate: "شمسی",
+    vehicleToday: "امروز",
+    vehicleExpenseInvalid:
+      "عنوان، مبلغ صحیح و مثبت و تاریخ معتبر تا امروز وارد کن. کیلومتر باید عدد صحیح و نامنفی باشد یا خالی بماند. مجموع مبلغ‌ها هم باید در محدودهٔ قابل محاسبه باشد.",
+    vehicleNoExpenses:
+      "هنوز هزینه‌ای ثبت نشده. اولین هزینهٔ سوخت، تعمیرات یا بیمه را اضافه کن.",
+    vehicleExpenseDeleteConfirm:
+      "این هزینه حذف شود؟ مجموع هزینه‌ها دوباره محاسبه می‌شود.",
+    vehicleDeleteConfirm:
+      "این خودرو با تمام هزینه‌ها و سررسیدهایش حذف شود؟ این کار قابل برگشت نیست.",
+    vehicleTotal: "مجموع هزینه‌های ثبت‌شده",
+    vehicleExpenseCount: "تعداد هزینه‌ها",
+    vehicleNextDue: "نزدیک‌ترین سررسید انجام‌نشده",
+    vehicleManage: "مدیریت خودرو",
+    vehicleClose: "بستن جزئیات",
+    vehicleMore: "نمایش بیشتر",
+    vehicleAddReminder: "ثبت سررسید",
+    vehicleEditReminder: "ویرایش سررسید",
+    vehicleReminderName: "عنوان سررسید",
+    vehicleReminderExample: "مثلاً تمدید بیمه شخص ثالث",
+    vehicleDueDate: "تاریخ سررسید",
+    vehicleReminderFormHint:
+      "این سررسید فقط یک‌بار و بر اساس تاریخ واردشده است. برای دریافت اعلان، یادآوری را پایین فهرست خودروها روشن کن. زمان‌های یادآوری گذشته اعلان ندارند.",
+    vehicleReminderInvalid: "عنوان و تاریخ شمسی معتبر وارد کن.",
+    vehicleReminderCompletionHint:
+      "با انجام‌شدن سررسید، اعلان در انتظار لغو می‌شود. هزینه را جداگانه ثبت کن و برای سرویس یا تمدید بعدی، سررسید جدید بساز.",
+    vehicleNoReminders:
+      "هنوز سررسیدی ثبت نشده. تاریخ تمدید بیمه یا سرویس را اضافه کن.",
+    vehicleReminderDeleteConfirm: "این سررسید و اعلان در انتظارش حذف شوند؟",
+    vehicleDone: "انجام‌شده",
+    vehicleOverdue: "گذشته از سررسید",
+    vehicleDueToday: "سررسید امروز",
+    vehicleUpcoming: "در پیش",
+    vehicleMarkDone: "ثبت انجام‌شدن",
+    vehicleUndoDone: "لغو انجام‌شدن",
+    vehicleNoReport: "بعد از ثبت اولین هزینه، گزارش ماهانه نمایش داده می‌شود.",
+    vehiclePreviousMonth: "ماه قبل",
+    vehicleNextMonth: "ماه بعد",
+    vehicleMonthTotal: "هزینه‌های این ماه",
+    vehicleReportHint:
+      "گزارش بر اساس ماه شمسی و تاریخ هزینه است. همهٔ مبلغ‌ها با واحد پول همین خودرو نمایش داده می‌شوند.",
+    vehicleNotifications: "اعلان‌های دفتر خودرو",
+    vehicleNotificationHint:
+      "اعلان محلی حدود ساعت ۹ صبح روز سررسید، با ساعت گوشی. تنظیمات گوشی ممکن است اعلان را به تأخیر بیندازد. این تنظیم برای همهٔ خودروهاست.",
+    vehicleNotificationsOn: "اعلان خودروها روشن است",
+    vehicleNotificationsOff: "اعلان خودروها خاموش است",
+    vehicleNotificationsEnable: "روشن کردن اعلان خودروها",
+    vehicleNotificationsDisable: "خاموش کردن اعلان خودروها",
+    vehicleScheduled: "اعلان‌های زمان‌بندی‌شده",
+    vehicleNotificationLimit:
+      "بعضی سررسیدها در صف اعلان گوشی جا نمی‌شوند. حداکثر ۶۰ جایگاه با یادآوری‌های دیگر مشترک است. برای به‌روزرسانی صف، برنامه را مرتب باز کن.",
+    vehicleNotificationError:
+      "اعلان خودروها به‌روز نشد. مجوز اعلان را بررسی کن و دوباره تلاش کن. ممکن است بعضی اعلان‌ها هنوز طبق برنامهٔ قبلی باشند.",
+    vehicleNotificationSettings: "تنظیمات اعلان گوشی",
+    vehicleSettingsError:
+      "تنظیمات باز نشد. از تنظیمات گوشی وارد بخش این برنامه شو.",
+    vehicleReminderTitle: "سررسید خودروی شما امروز است",
+    vehicleWebReminders:
+      "سررسیدها اینجا ذخیره می‌شوند؛ دریافت اعلان در نسخهٔ اندروید و iOS در دسترس است.",
+
+    installmentReminders: "یادآوری سررسید",
+    installmentReminderTitle: "سررسید قسط امروز",
+    installmentReminderHint:
+      "اعلان محلی حدود ساعت ۹ صبح روز سررسید، با ساعت گوشی. اقساط پرداخت‌شده و زمان‌های یادآوری گذشته، اعلان ندارند. تنظیمات گوشی ممکن است اعلان را به تأخیر بیندازد.",
+    installmentReminderOn: "یادآوری روشن است",
+    installmentReminderOff: "یادآوری خاموش است",
+    installmentReminderScheduled: "یادآوری‌های زمان‌بندی‌شده",
+    installmentReminderLimit:
+      "حداکثر ۶۰ یادآوری نزدیک‌تر در صف قرار می‌گیرد؛ با وجود اعلان‌های دیگر ممکن است کمتر باشد. برای زمان‌بندی اقساط بعدی، برنامه را مرتب باز کن.",
+    installmentReminderError:
+      "یادآوری‌ها به‌روز نشدند. مجوز اعلان را در تنظیمات گوشی بررسی کن و دوباره تلاش کن. ممکن است بعضی اعلان‌ها هنوز طبق برنامهٔ قبلی باشند.",
+    installmentNotificationSettings: "تنظیمات اعلان گوشی",
+    installmentReminderDisable: "خاموش کردن یادآوری",
+    installmentReminderEnable: "روشن کردن یادآوری",
+    installmentBackup: "پشتیبان و بازیابی",
+    installmentBackupHint:
+      "از همهٔ دفترهای اقساط و پرداخت‌ها فایل بگیر و در جای مطمئن ذخیره کن. پشتیبان‌گیری دستی است و فایل رمزگذاری نشده است. مجوز اعلان‌ها در پشتیبان نیست.",
+    installmentBackupExport: "دریافت فایل پشتیبان",
+    installmentBackupImport: "انتخاب فایل پشتیبان",
+    installmentBackupCount: "تعداد دفترهای پشتیبان",
+    installmentBackupReplaceHint:
+      "بازیابی، تمام دفترهای اقساط و پرداخت‌های فعلی را با اطلاعات این فایل جایگزین می‌کند. اگر اطلاعات فعلی را لازم داری، اول پشتیبان بگیر. اطلاعات ابزارهای دیگر تغییری نمی‌کند.",
+    installmentBackupReplace: "جایگزینی دفترهای فعلی",
+    installmentBackupError:
+      "دریافت یا بازیابی پشتیبان انجام نشد. فایل معتبر پشتیبان اقساط ایران تولز تا ۵ مگابایت انتخاب کن، فضای ذخیره‌سازی را بررسی کن و دوباره تلاش کن.",
+    installmentBackupRestored: "دفترهای اقساط و پرداخت‌ها بازیابی شدند.",
+
+    tripSplit: "دنگ سفر",
+    tripSplitDescription: "ثبت هزینه‌های گروه و محاسبهٔ تسویه",
+    tripLocalHint:
+      "سفرها روی همین دستگاه ذخیره می‌شوند. هر سفر یک واحد پول دارد و اشتراک‌گذاری آنلاین ندارد.",
+    tripBusy: "در حال خواندن یا ذخیره…",
+    tripStorageError:
+      "خواندن یا ذخیرهٔ تغییرات ممکن نشد. دوباره تلاش کن؛ آخرین تغییر ممکن است ثبت نشده باشد.",
+    tripRetry: "تلاش دوباره",
+    tripNew: "سفر جدید",
+    tripName: "نام سفر",
+    tripNameExample: "مثلاً سفر شیراز",
+    tripMembersHint:
+      "۲ تا ۳۰ نفر با نام‌های متفاوت وارد کن. اعضا و واحد پول بعد از ساخت سفر ثابت می‌مانند.",
+    tripMember: "عضو",
+    tripRemoveMember: "برداشتن عضو",
+    tripAddMember: "افزودن عضو",
+    tripCreate: "ساخت سفر",
+    tripCancel: "انصراف",
+    tripDelete: "حذف",
+    tripDeleteConfirm:
+      "این سفر و همهٔ هزینه‌های آن حذف شوند؟ این کار قابل بازگشت نیست.",
+    tripDeleteExpenseConfirm:
+      "این هزینه حذف شود؟ ماندهٔ افراد دوباره محاسبه می‌شود.",
+    tripAddExpense: "ثبت هزینه",
+    tripEditExpense: "ویرایش هزینه",
+    tripExpenseTitle: "عنوان هزینه",
+    tripExpenseExample: "مثلاً شام یا هتل",
+    tripAmount: "مبلغ",
+    tripPayer: "پرداخت‌کننده",
+    tripWeighted: "تقسیم سهمی",
+    tripEqual: "تقسیم مساوی",
+    tripWeightsHint:
+      "سهم صحیح وارد کن: ۲ یعنی دو برابر سهم ۱. برای فردی که در این هزینه شریک نیست صفر بگذار.",
+    tripInvalidExpense:
+      "مبلغ صحیح مثبت و سهم‌های صحیح نامنفی وارد کن. سهم حداقل یک نفر باید مثبت باشد.",
+    tripShares: "سهم افراد",
+    tripRoundingHint:
+      "اختلاف گرد کردن بین سهم‌ها توزیع می‌شود تا مجموع دقیقاً برابر هزینه باشد.",
+    tripSaveExpense: "ذخیره هزینه",
+    tripExpenseCount: "تعداد هزینه‌ها",
+    tripOpen: "مدیریت هزینه‌ها",
+    tripClose: "بستن جزئیات",
+    tripTotal: "مجموع هزینه‌ها",
+    tripCreditor: "طلبکار",
+    tripDebtor: "بدهکار",
+    tripBalanced: "تراز",
+    tripSettlements: "پیشنهاد تسویه",
+    tripSettlementHint:
+      "فقط بر اساس هزینه‌های ثبت‌شده است. این‌ها پیشنهاد پرداخت‌اند؛ پرداخت واقعی یا تسویهٔ ثبت‌شده نیستند.",
+    tripFrom: "از",
+    tripTo: "به",
+    tripExpenses: "هزینه‌های ثبت‌شده",
+    tripNoExpenses: "هنوز هزینه‌ای ثبت نشده؛ اولین هزینه را اضافه کن.",
+    tripMore: "نمایش بیشتر",
+
     installmentEdit: "ویرایش دفتر",
     installmentDelete: "حذف دفتر",
-    installmentDeleteConfirm: "این دفتر و تمام پرداخت‌های ثبت‌شدهٔ آن حذف شوند؟ این کار قابل بازگشت نیست.",
+    installmentDeleteConfirm:
+      "این دفتر و تمام پرداخت‌های ثبت‌شدهٔ آن حذف شوند؟ این کار قابل بازگشت نیست.",
     installmentCancel: "انصراف",
     installmentNew: "دفتر جدید",
     installmentSaveChanges: "ذخیره تغییرات",
-    installmentPaidEditHint: "این دفتر پرداخت ثبت‌شده دارد؛ عنوان قابل ویرایش است. برای تغییر مبلغ، واحد یا سررسیدها ابتدا ثبت پرداخت‌ها را لغو کن.",
+    installmentPaidEditHint:
+      "این دفتر پرداخت ثبت‌شده دارد؛ عنوان قابل ویرایش است. برای تغییر مبلغ، واحد یا سررسیدها ابتدا ثبت پرداخت‌ها را لغو کن.",
 
-    premiumLifetimeHint:
-      "با یک بار پرداخت، همهٔ ابزارها باز می‌شوند. بازیابی خرید با همان حساب و در همان فروشگاه انجام می‌شود.",
+    premiumDurationHint:
+      "دسترسی به ابزارهای ویژه ۹۰ روز اعتبار دارد. بازیابی خرید با همان حساب و در همان فروشگاه انجام می‌شود.",
     premiumActive: "نسخهٔ ویژه فعال است",
-    premiumBuy: "خرید دسترسی دائمی",
+    premiumBuy: "خرید دسترسی ۹۰روزه",
     premiumRestore: "بازیابی خرید",
     billingLoading: "در حال ارتباط با فروشگاه…",
     billingUnavailable: "خرید در این نسخه هنوز در دسترس نیست.",

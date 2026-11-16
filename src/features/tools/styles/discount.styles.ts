@@ -10,7 +10,7 @@ export function createDiscountStyles(
   return StyleSheet.create({
     container: {
       padding: spacing.lg,
-      paddingBottom: spacing.xxl,
+      paddingBottom: spacing.bottom,
       gap: spacing.md,
       backgroundColor: colors.background,
     },
